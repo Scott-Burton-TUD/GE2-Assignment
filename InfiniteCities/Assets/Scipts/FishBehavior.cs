@@ -30,7 +30,7 @@ public class FishBehavior : MonoBehaviour
             Vector3 direction = nearestTarget.transform.position - transform.position;
             direction.Normalize();
             GetComponent<Rigidbody>().AddForce(direction * speed * Time.deltaTime);
-            Quaternion rotation = Quaternion.LookRotation(direction);
+            Quaternion rotation = Quaternion.LookRotation(direction) ;
             transform.rotation = Quaternion.Slerp(transform.rotation, rotation, damping * Time.deltaTime);
         }
     }

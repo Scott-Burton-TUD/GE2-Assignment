@@ -5,7 +5,7 @@ using UnityEngine;
 public class SizeFood : MonoBehaviour
 {
     float fish;
-    public float Foodsize = 1000.1f;
+    public float Foodsize = 1f;
     // Start is called before the first frame update
     void Start()
     {
