@@ -1,1 +1,1 @@
-# InfiniteCities
+# GE2-Assignment
