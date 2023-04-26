@@ -2018,5 +2018,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c037a1c4b9552f84e9560bea534326bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  folderPath: Resouces
-  spawnPoint: {fileID: 379526459}
+  prefabFolderName: Terrain
+  spawnOnStart: 1

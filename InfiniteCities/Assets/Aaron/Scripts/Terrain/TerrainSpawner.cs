@@ -1,39 +1,34 @@
-     using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using System.IO;
+
+
 
 public class TerrainSpawner : MonoBehaviour
 {
-    public string folderPath; // The folder path where the prefabs are located.
-    public Transform spawnPoint; // The location where the prefab should be spawned.
+    public string prefabFolderName = "Prefabs"; // the name of the folder that holds the prefabs
+    public bool spawnOnStart = true; // whether to spawn a prefab on Start
 
-    private GameObject[] prefabs; // An array of prefabs to spawn.
-
-    private void Start()
+    void Start()
     {
-        LoadPrefabs();
-        SpawnRandomPrefab(); 
-    }
-
-    private void LoadPrefabs()
-    {
-        // Load all prefabs from the specified folder path.
-        string[] prefabPaths = Directory.GetFiles(folderPath, "*.prefab");
-        prefabs = new GameObject[prefabPaths.Length];
-
-        for (int i = 0; i < prefabPaths.Length; i++)
+        if (spawnOnStart)
         {
-            prefabs[i] = (GameObject)Resources.Load(prefabPaths[i].Replace(".prefab", ""), typeof(GameObject));
+            SpawnPrefab();
         }
     }
 
-    private void SpawnRandomPrefab()
+    public void SpawnPrefab()
     {
-        // Generate a random index within the array length.
-        int randomIndex = Random.Range(0, prefabs.Length);
-
-        // Spawn the prefab at the specified location.
-        Instantiate(prefabs[randomIndex], spawnPoint.position, Quaternion.identity);
+        GameObject[] prefabs = Resources.LoadAll<GameObject>(prefabFolderName); // load all the prefabs in the folder
+        if (prefabs.Length > 0)
+        {
+            int randomIndex = Random.Range(0, prefabs.Length); // generate a random index
+            GameObject prefabToSpawn = prefabs[randomIndex]; // select the prefab to spawn
+            Instantiate(prefabToSpawn, transform.position, Quaternion.identity); // spawn the prefab
+        }
+        else
+        {
+            Debug.LogWarning("No prefabs found in folder: " + prefabFolderName);
+        }
     }
 }
