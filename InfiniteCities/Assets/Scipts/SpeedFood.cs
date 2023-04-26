@@ -5,7 +5,7 @@ using UnityEngine;
 public class SpeedFood : MonoBehaviour
 {
     float fish;
-    public float Foodspeed = 1000.1f;
+    public float Foodspeed = 1f;
     // Start is called before the first frame update
     void Start()
     {
