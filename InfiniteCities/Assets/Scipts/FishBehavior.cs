@@ -5,6 +5,7 @@ public class FishBehavior : MonoBehaviour
     public string targetTag;
     public float speed;
     public float damping;
+    public float size = 1;
 
     void FixedUpdate()
     {
@@ -12,6 +13,7 @@ public class FishBehavior : MonoBehaviour
         GameObject[] targets = GameObject.FindGameObjectsWithTag(targetTag);
         GameObject nearestTarget = null;
         float nearestDistance = Mathf.Infinity;
+        transform.localScale = new Vector3(size, size, size);
         foreach (GameObject target in targets)
         {
             float distance = Vector3.Distance(transform.position, target.transform.position);
