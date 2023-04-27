@@ -9,7 +9,12 @@ public class FishBehavior : MonoBehaviour
     public float size = 1;
     bool CombatStateMode;
     public GameObject FishCollider;
+    
 
+    public void Start()
+    {
+        
+    }
     public void Update()
     {
         CombatStateMode = GetComponentInChildren<Combat>().combatState;
