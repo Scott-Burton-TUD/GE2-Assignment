@@ -19676,6 +19676,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 369054688}
     m_Modifications:
+    - target: {fileID: 8768605843198131411, guid: f98b5a528ce6a0944937eee08d431484, type: 3}
+      propertyPath: fadeDuration
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8768605843506733546, guid: f98b5a528ce6a0944937eee08d431484, type: 3}
       propertyPath: m_RootOrder
       value: 0
