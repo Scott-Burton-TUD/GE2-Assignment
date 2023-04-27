@@ -7,14 +7,12 @@ using UnityEngine;
 public class TerrainSpawner : MonoBehaviour
 {
     public string prefabFolderName = "Prefabs"; // the name of the folder that holds the prefabs
-    public bool spawnOnStart = true; // whether to spawn a prefab on Start
+    public float spawnInterval = 5f; // the time interval between spawns
+    private GameObject spawnedPrefab; // the reference to the spawned prefab
 
     void Start()
     {
-        if (spawnOnStart)
-        {
-            SpawnPrefab();
-        }
+        InvokeRepeating("SpawnPrefab", 0f, spawnInterval); // invoke the SpawnPrefab method every spawnInterval seconds
     }
 
     public void SpawnPrefab()
@@ -24,7 +22,12 @@ public class TerrainSpawner : MonoBehaviour
         {
             int randomIndex = Random.Range(0, prefabs.Length); // generate a random index
             GameObject prefabToSpawn = prefabs[randomIndex]; // select the prefab to spawn
-            Instantiate(prefabToSpawn, transform.position, Quaternion.identity); // spawn the prefab
+            if (spawnedPrefab != null)
+            {
+                Destroy(spawnedPrefab); // destroy the previously spawned prefab
+            }
+            spawnedPrefab = Instantiate(prefabToSpawn, transform.position, Quaternion.identity); // spawn the prefab
+            spawnedPrefab.transform.parent = transform; // make the spawned prefab a child of this game object
         }
         else
         {
