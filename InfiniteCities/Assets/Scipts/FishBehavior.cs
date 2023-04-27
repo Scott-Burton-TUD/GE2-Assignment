@@ -3,35 +3,70 @@ using UnityEngine;
 public class FishBehavior : MonoBehaviour
 {
     public string targetTag;
+    public string fishFightTag;
     public float speed;
     public float damping;
     public float size = 1;
+    bool CombatStateMode;
+    public GameObject FishCollider;
+    
 
+    public void Start()
+    {
+        
+    }
+    public void Update()
+    {
+        CombatStateMode = GetComponentInChildren<Combat>().combatState;
+        //Debug.Log("combat" + CombatStateMode);
+    }
     void FixedUpdate()
     {
-        // Find the nearest object with the target tag
-        GameObject[] targets = GameObject.FindGameObjectsWithTag(targetTag);
-        GameObject nearestTarget = null;
-        float nearestDistance = Mathf.Infinity;
+        GameObject target = null;
         transform.localScale = new Vector3(size, size, size);
-        foreach (GameObject target in targets)
+
+        if (CombatStateMode)
         {
-            float distance = Vector3.Distance(transform.position, target.transform.position);
-            if (distance < nearestDistance)
+            // If in combat mode, find the nearest game object with a different tag
+            GameObject[] targets = GameObject.FindGameObjectsWithTag(fishFightTag);
+            float nearestDistance = Mathf.Infinity;
+            foreach (GameObject t in targets)
             {
-                nearestDistance = distance;
-                nearestTarget = target;
+               
+                    float distance = Vector3.Distance(transform.position, t.transform.position);
+                    if (distance < nearestDistance)
+                    {
+                        nearestDistance = distance;
+                        target = t;
+                    }
+                
+            }
+        }
+        if (CombatStateMode == false)
+        {
+            // If not in combat mode, find the nearest game object with the target tag
+            GameObject[] targets = GameObject.FindGameObjectsWithTag(targetTag);
+            float nearestDistance = Mathf.Infinity;
+            foreach (GameObject t in targets)
+            {
+                float distance = Vector3.Distance(transform.position, t.transform.position);
+                if (distance < nearestDistance)
+                {
+                    nearestDistance = distance;
+                    target = t;
+                }
             }
         }
 
-        // Apply force towards the nearest target
-        if (nearestTarget != null)
+        // Apply force towards the target
+        if (target != null)
         {
-            Vector3 direction = nearestTarget.transform.position - transform.position;
+            Vector3 direction = target.transform.position - transform.position;
             direction.Normalize();
-            GetComponent<Rigidbody>().AddForce(direction * speed * Time.deltaTime);
-            Quaternion rotation = Quaternion.LookRotation(direction) ;
+            GetComponent<Rigidbody>().AddForce(direction.normalized * speed);
+            Quaternion rotation = Quaternion.LookRotation(direction);
             transform.rotation = Quaternion.Slerp(transform.rotation, rotation, damping * Time.deltaTime);
         }
     }
+    
 }
