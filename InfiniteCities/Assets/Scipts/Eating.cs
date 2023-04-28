@@ -5,38 +5,40 @@ using UnityEngine;
 public class Eating : MonoBehaviour
 {
     public string fishEatTag;
-    
+    public float fight;
     public GameObject Combar;
+    public GameObject Stats;
+
     // Start is called before the first frame update
     void Update()
     {
-        
 
-
+        fight = Stats.GetComponent<FishUI>().Overall;
     }
-    public void OnTriggerEnter(Collider other)
+
+     void OnTriggerEnter(Collider other)
     {
+        //Debug.Log("colliderWOrks");
         // Get the game object that owns the collider
         GameObject otherObject = other.gameObject;
 
-        // Check if the game object is a child of the same parent as FishCollider
-        //if (otherObject.transform.parent == FishCollider.transform.parent)
-        //{
-        // Ignore the collision
-        //     return;
-        // }
+        // Check if the colliding object has a FishUI component
+        FishUI otherFishUI = otherObject.GetComponentInChildren<FishUI>();
+        if (otherFishUI == null)
+        {
+            Debug.Log("Null:(");
+            return;
+        }
 
-        if (otherObject.CompareTag(fishEatTag))
+        float EnemyStrenght = otherFishUI.Overall;
+
+        Debug.Log(EnemyStrenght);
+        if (otherObject.CompareTag(fishEatTag) && fight > EnemyStrenght)
         {
             // Destroy the other game object
             Combar.GetComponent<Combat>().combatState = false;
-            
             Destroy(otherObject);
-            
             //Debug.Log("F");
-
-
         }
     }
-   
 }

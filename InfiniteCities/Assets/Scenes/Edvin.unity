@@ -227,8 +227,9 @@ GameObject:
   - component: {fileID: 202834051}
   - component: {fileID: 202834053}
   - component: {fileID: 202834052}
+  - component: {fileID: 202834054}
   m_Layer: 0
-  m_Name: Eating Radius
+  m_Name: 'Eating '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -260,8 +261,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73aec171c3c005a45a563e1dd1ceb4f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fishEatTag: Fish1
+  fishEatTag: Fish
+  fight: 0
   Combar: {fileID: 834804029}
+  Stats: {fileID: 814821008}
 --- !u!136 &202834053
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -274,6 +277,20 @@ CapsuleCollider:
   m_Enabled: 1
   m_Radius: 0.5
   m_Height: 0.5
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!136 &202834054
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 202834050}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.4
+  m_Height: 0.4
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!43 &292332482
@@ -814,6 +831,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textMesh: {fileID: 510866998}
+  UISize: 0
+  UISpeed: 0
+  Overall: 0
 --- !u!102 &510866998
 TextMesh:
   serializedVersion: 3
@@ -1100,9 +1120,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetTag: Food
   fishFightTag: Fish
-  speed: 175.38
+  speed: 100
   damping: 0.1
-  size: 100
+  size: 105
   FishCollider: {fileID: 648846517}
 --- !u!136 &648846520
 CapsuleCollider:
@@ -1180,6 +1200,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textMesh: {fileID: 814821011}
+  UISize: 0
+  UISpeed: 0
+  Overall: 0
 --- !u!102 &814821011
 TextMesh:
   serializedVersion: 3
@@ -1479,8 +1502,9 @@ GameObject:
   - component: {fileID: 899190497}
   - component: {fileID: 899190499}
   - component: {fileID: 899190498}
+  - component: {fileID: 899190500}
   m_Layer: 0
-  m_Name: Eating Radius
+  m_Name: 'Eating '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1513,7 +1537,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fishEatTag: Fish1
+  fight: 0
   Combar: {fileID: 2009445891}
+  Stats: {fileID: 510866995}
 --- !u!136 &899190499
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1526,6 +1552,20 @@ CapsuleCollider:
   m_Enabled: 1
   m_Radius: 0.5
   m_Height: 0.5
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!136 &899190500
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 899190496}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.4
+  m_Height: 0.4
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!43 &1192587195
@@ -2239,9 +2279,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetTag: Food
   fishFightTag: Fish1
-  speed: 100
+  speed: 131.86
   damping: 0.1
-  size: 100
+  size: 105
   FishCollider: {fileID: 1910458462}
 --- !u!136 &1910458468
 CapsuleCollider:
