@@ -14,7 +14,7 @@ public class Combat : MonoBehaviour
         
 
     }
-    private void OnTriggerEnter(Collider other)
+     void OnTriggerEnter(Collider other)
     {
         
         if (other.tag == fishFightTag)
@@ -26,11 +26,5 @@ public class Combat : MonoBehaviour
             
         
     }
-    void OnTriggerExit(Collider other)
-    {
-        if (other.tag == fishFightTag)
-        {
-            combatState = false;
-        }
-    }
+    
 }

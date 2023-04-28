@@ -5,10 +5,12 @@ using UnityEngine;
 public class Eating : MonoBehaviour
 {
     public string fishEatTag;
+    
+    public GameObject Combar;
     // Start is called before the first frame update
     void Update()
     {
-
+        
 
 
     }
@@ -27,8 +29,11 @@ public class Eating : MonoBehaviour
         if (otherObject.CompareTag(fishEatTag))
         {
             // Destroy the other game object
+            Combar.GetComponent<Combat>().combatState = false;
+            
             Destroy(otherObject);
-            Debug.Log("FUCK U");
+            
+            //Debug.Log("F");
 
 
         }
