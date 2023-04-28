@@ -8,7 +8,7 @@ public class TestFade : MonoBehaviour
 
     private Renderer test;             // Reference to the Renderer component.
     private Color originalColor;           // The original color of the object.
-    private bool fadingIn = true;          // Whether the object is currently fading in or out.
+    //private bool fadingIn = true;          // Whether the object is currently fading in or out.
 
     void Start()
     {
