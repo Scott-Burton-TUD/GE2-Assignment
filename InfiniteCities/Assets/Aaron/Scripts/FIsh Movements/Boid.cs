@@ -36,7 +36,7 @@ public class Boid : MonoBehaviour
 
         foreach (SteeringBehaviour b in behaviours)
         {
-            this.behaviours.Add(b);            
+            this.behaviours.Add(b);
         }
     }
 
@@ -48,7 +48,7 @@ public class Boid : MonoBehaviour
         return desired - velocity;
     }
 
-    public Vector3 ArriveForce(Vector3 target, float slowingDistance = 10.0f,float  decelleration = 3)
+    public Vector3 ArriveForce(Vector3 target, float slowingDistance = 10.0f, float decelleration = 3)
     {
         Vector3 toTarget = target - transform.position;
 
@@ -62,11 +62,11 @@ public class Boid : MonoBehaviour
         {
             desired = maxSpeed * (toTarget / distance);
             decelleration = 1;
-        }    
+        }
 
         return desired - velocity * decelleration;
     }
-    
+
 
     Vector3 Calculate()
     {
@@ -78,7 +78,7 @@ public class Boid : MonoBehaviour
         // 3. Truncated
         // 4. Running sum
 
-        foreach(SteeringBehaviour b in behaviours)
+        foreach (SteeringBehaviour b in behaviours)
         {
             if (b.isActiveAndEnabled)
             {
@@ -92,7 +92,7 @@ public class Boid : MonoBehaviour
             }
         }
 
-        
+
 
         return force;
     }
@@ -106,7 +106,7 @@ public class Boid : MonoBehaviour
         velocity += acceleration * Time.deltaTime;
 
         velocity = Vector3.ClampMagnitude(velocity, maxSpeed);
-        
+
         if (velocity.magnitude > 0)
         {
             Vector3 tempUp = Vector3.Lerp(transform.up, Vector3.up + (acceleration * banking), Time.deltaTime * 3.0f);

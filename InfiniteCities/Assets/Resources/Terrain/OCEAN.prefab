@@ -11,7 +11,8 @@ GameObject:
   - component: {fileID: 3509989094740157226}
   - component: {fileID: 511765391009410191}
   - component: {fileID: 2377567041216616517}
-  m_Layer: 0
+  - component: {fileID: 1454214521729715018}
+  m_Layer: 6
   m_Name: OCEAN
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26,8 +27,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4322941967404841360}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 718.17, y: 21.876, z: -800.4}
-  m_LocalScale: {x: 6070.738, y: 4220.2534, z: 6895.0234}
+  m_LocalPosition: {x: 718.17, y: 22.175, z: -800.4}
+  m_LocalScale: {x: 6070.738, y: 3934.88, z: 6895.0234}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -81,3 +82,17 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &1454214521729715018
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4322941967404841360}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -5495902117074765545, guid: ba76640842dc63841b84838349ae23e3, type: 3}

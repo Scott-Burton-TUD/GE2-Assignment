@@ -11,7 +11,8 @@ GameObject:
   - component: {fileID: 4515210575340641695}
   - component: {fileID: 650378227089084986}
   - component: {fileID: 3378382263063144176}
-  m_Layer: 0
+  - component: {fileID: 2091051094404266308}
+  m_Layer: 6
   m_Name: OCEAN4ROCKS
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26,8 +27,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3882824935406847781}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -671.8772, y: 677.2898, z: -822.4801}
-  m_LocalScale: {x: 6070.738, y: 4220.2534, z: 6895.0234}
+  m_LocalPosition: {x: -671.8772, y: 676.92, z: -822.4801}
+  m_LocalScale: {x: 6070.738, y: 3535.475, z: 6895.0234}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -83,3 +84,17 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &2091051094404266308
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3882824935406847781}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -5495902117074765545, guid: 9aafd43ca7c82fc4b8d742b731072b1b, type: 3}
