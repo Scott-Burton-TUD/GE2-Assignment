@@ -25,7 +25,7 @@ public class fishspawn : MonoBehaviour
                                                                 Random.Range(-boxSize.y / 2f, boxSize.y / 2f),
                                                                 Random.Range(-boxSize.z / 2f, boxSize.z / 2f));
             GameObject prefab = prefabsToSpawn[Random.Range(0, prefabsToSpawn.Length)];
-            GameObject spawnedPrefab = Instantiate(prefab, spawnPos, Quaternion.identity);
+            GameObject spawnedPrefab = Instantiate(prefab, spawnPos, Quaternion.Euler(0f, Random.Range(0f, 360f), 0f));
             spawnedPrefab.transform.parent = transform;
             Vector3 randomScale = new Vector3(Random.Range(minScale.x, maxScale.x),
                                               Random.Range(minScale.y, maxScale.y),
