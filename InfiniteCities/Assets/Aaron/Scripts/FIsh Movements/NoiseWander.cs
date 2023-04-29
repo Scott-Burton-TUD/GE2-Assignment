@@ -11,9 +11,8 @@ public class NoiseWander : SteeringBehaviour
     public float amplitude = 80;
     public float distance = 5;
 
-    public enum Axis { Horizontal, Vertical };
-
-    public Axis axis = Axis.Horizontal;
+    public enum Axis { Horizontal, Vertical, Both };
+    public Axis axis = Axis.Both;
 
     Vector3 target;
     Vector3 worldTarget;
@@ -34,29 +33,12 @@ public class NoiseWander : SteeringBehaviour
     // Update is called once per frame
     public override Vector3 Calculate()
     {
-        float n  = (Mathf.PerlinNoise(theta, 1) * 2.0f) - 1.0f;
-        float angle = n * amplitude * Mathf.Deg2Rad;
+        // Get a random vector for the target
+        target = new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 1f), Random.Range(-1f, 1f)).normalized * radius;
 
-        Vector3 rot = transform.rotation.eulerAngles;
-
-        rot.x = 0;
-        if (axis == Axis.Horizontal)
-        {
-            target.x = Mathf.Sin(angle);
-            target.z = Mathf.Cos(angle);
-            rot.z = 0;
-        }
-        else
-        {
-            target.y = Mathf.Sin(angle);
-            target.z = Mathf.Cos(angle);
-        }
-        target *= radius;
-
+        // Add the distance offset and rotate the target to world space
         Vector3 localtarget = target + Vector3.forward * distance;
-        worldTarget = transform.position + Quaternion.Euler(rot) * localtarget;
-
-        theta += frequency * Time.deltaTime * Mathf.PI * 2.0f;
+        worldTarget = transform.TransformPoint(localtarget);
 
         return boid.SeekForce(worldTarget);
     }

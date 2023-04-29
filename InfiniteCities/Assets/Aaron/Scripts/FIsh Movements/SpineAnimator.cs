@@ -3,51 +3,63 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class SpineAnimator : MonoBehaviour {
-    
-    
-    public int numSegments = 10;  // Number of segments in the seaweed
-    public float segmentLength = 0.5f;  // Length of each segment
-    public float amplitude = 0.1f;  // Maximum amplitude of the wave
-    public float frequency = 0.5f;  // Frequency of the wave
-    public float speed = 1f;  // Speed of the wave
-    public float rotationSpeed = 30f;  // Speed of the rotation
-    public GameObject cubePrefab;  // Prefab to use for each segment
 
-    private GameObject[] segments;  // Array to hold each segment
-    private Vector3[] originalPositions;  // Array to hold the original positions of each segment
 
+    public GameObject[] bones;
+
+    public float bondDamping = 25;
+    public float angularBondDamping = 25;
+
+    private List<Vector3> offsets = new List<Vector3>();
+
+    // Use this for initialization
     void Start()
     {
-        // Initialize the segments array and originalPositions array
-        segments = new GameObject[numSegments];
-        originalPositions = new Vector3[numSegments];
-
-        // Generate the seaweed
-        for (int i = 0; i < numSegments; i++)
+        if (bones != null)
         {
-            GameObject segment = Instantiate(cubePrefab, transform);
-            segment.transform.localPosition = new Vector3(0f, i * segmentLength, 0f);
-            segments[i] = segment;
-            originalPositions[i] = segment.transform.localPosition;
+            for (int i = 0; i < bones.Length; i++)
+            {
+                GameObject prevBone = (i == 0)
+                        ? this.gameObject
+                        : bones[i - 1];
+                GameObject bone = bones[i];
+
+                Vector3 offset = bone.transform.position
+                    - prevBone.transform.position;
+                offset = Quaternion.Inverse(prevBone.transform.rotation)
+                    * offset;
+
+                offsets.Add(offset);
+            }
         }
     }
 
-    void Update()
+    // Update is called once per frame
+    void FixedUpdate()
     {
-        // Move each segment up and down based on a sine wave
-        for (int i = 0; i < numSegments; i++)
+        for (int i = 0; i < bones.Length; i++)
         {
-            GameObject segment = segments[i];
-            Vector3 originalPosition = originalPositions[i];
-            Vector3 newPosition = originalPosition + new Vector3(
-                amplitude * Mathf.Sin((Time.time + i * frequency) * speed),
-                0f,
-                0f
-            );
-            segment.transform.localPosition = newPosition;
-        }
+            GameObject prevBone = (i == 0)
+                ? this.gameObject
+                : bones[i - 1];
 
-        // Rotate the entire seaweed
-        transform.Rotate(Vector3.up, rotationSpeed * Time.deltaTime);
+            GameObject bone = bones[i];
+
+            //Vector3 wantedPosition = prevBone.transform.TransformPoint(offsets[i]);
+
+            Vector3 wantedPosition = (prevBone.transform.rotation * offsets[i]) + prevBone.transform.position;
+
+            bone.transform.position = Vector3.Lerp(bone.transform.position
+                , wantedPosition
+                , Time.deltaTime * bondDamping);
+
+            Quaternion wantedRotation = Quaternion.LookRotation(prevBone.transform.position
+                - bone.transform.position);
+
+            bone.transform.rotation = Quaternion.Slerp(bone.transform.rotation
+                , wantedRotation
+                , Time.deltaTime * angularBondDamping);
+
+        }
     }
 }

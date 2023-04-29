@@ -11,7 +11,8 @@ GameObject:
   - component: {fileID: 3018836579001577627}
   - component: {fileID: 2182790385860296510}
   - component: {fileID: 4156298003684510708}
-  m_Layer: 0
+  - component: {fileID: 3899696677371176609}
+  m_Layer: 6
   m_Name: TALLOCEAN3ROCKMOSS
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -83,3 +84,17 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &3899696677371176609
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2499180529810172449}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -5495902117074765545, guid: 9549ee967e0f42c459074ff09bbe10e9, type: 3}
