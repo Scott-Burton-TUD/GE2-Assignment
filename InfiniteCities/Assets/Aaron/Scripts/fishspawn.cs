@@ -7,6 +7,8 @@ public class fishspawn : MonoBehaviour
     public GameObject[] prefabsToSpawn;
     public int numPrefabsToSpawn = 10;
     public Vector3 boxSize = new Vector3(10f, 10f, 10f);
+    public Vector3 minScale = Vector3.one;
+    public Vector3 maxScale = Vector3.one;
     public Color gizmoColor = Color.white;
 
     private void OnDrawGizmosSelected()
@@ -23,9 +25,12 @@ public class fishspawn : MonoBehaviour
                                                                 Random.Range(-boxSize.y / 2f, boxSize.y / 2f),
                                                                 Random.Range(-boxSize.z / 2f, boxSize.z / 2f));
             GameObject prefab = prefabsToSpawn[Random.Range(0, prefabsToSpawn.Length)];
-            Quaternion randomRotation = Quaternion.Euler(0f, Random.Range(0f, 360f), 0f);
-            GameObject spawnedPrefab = Instantiate(prefab, spawnPos, randomRotation);
+            GameObject spawnedPrefab = Instantiate(prefab, spawnPos, Quaternion.identity);
             spawnedPrefab.transform.parent = transform;
+            Vector3 randomScale = new Vector3(Random.Range(minScale.x, maxScale.x),
+                                              Random.Range(minScale.y, maxScale.y),
+                                              Random.Range(minScale.z, maxScale.z));
+            spawnedPrefab.transform.localScale = randomScale;
         }
     }
 }
