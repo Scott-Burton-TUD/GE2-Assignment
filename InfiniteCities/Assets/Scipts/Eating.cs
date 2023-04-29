@@ -26,7 +26,6 @@ public class Eating : MonoBehaviour
         FishUI otherFishUI = otherObject.GetComponentInChildren<FishUI>();
         if (otherFishUI == null)
         {
-            Debug.Log("Null:(");
             return;
         }
 
@@ -39,6 +38,10 @@ public class Eating : MonoBehaviour
             Combar.GetComponent<Combat>().combatState = false;
             Destroy(otherObject);
             //Debug.Log("F");
+        }
+        if(fight == EnemyStrenght)
+        {
+            Combar.GetComponent<Combat>().combatState = false;
         }
     }
 }

@@ -126,7 +126,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec1dd546fc3e2074b8e00bbd7c57118c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Foodsize: 1000.1
+  Foodsize: 10
 --- !u!114 &3434505975802556345
 MonoBehaviour:
   m_ObjectHideFlags: 0
