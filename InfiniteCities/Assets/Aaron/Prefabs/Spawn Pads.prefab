@@ -196,5 +196,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefabFolderName: Terrain
-  spawnInterval: 5
+  spawnInterval: 30
   fadeTime: 2
