@@ -1,10 +1,9 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpineAnimator : MonoBehaviour {
-    
-    
+public class seaweed : MonoBehaviour
+{
     public int numSegments = 10;  // Number of segments in the seaweed
     public float segmentLength = 0.5f;  // Length of each segment
     public float amplitude = 0.1f;  // Maximum amplitude of the wave
@@ -41,7 +40,7 @@ public class SpineAnimator : MonoBehaviour {
             Vector3 originalPosition = originalPositions[i];
             Vector3 newPosition = originalPosition + new Vector3(
                 amplitude * Mathf.Sin((Time.time + i * frequency) * speed),
-                0f,
+                amplitude * Mathf.Cos((Time.time + i * frequency) * speed),
                 0f
             );
             segment.transform.localPosition = newPosition;
