@@ -20,7 +20,7 @@ public class SpeedFood : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
 
-        if (other.tag == "Fish")
+        if (other.tag == "Fish" || other.tag == "Fish1")
         {
             FishBehavior fishBehavior = other.GetComponent<FishBehavior>();
             if (fishBehavior != null)
