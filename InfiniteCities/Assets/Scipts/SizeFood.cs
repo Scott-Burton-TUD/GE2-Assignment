@@ -9,18 +9,18 @@ public class SizeFood : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
     private void OnTriggerEnter(Collider other)
     {
-        
-        if (other.tag == "Fish")
+
+        if (other.tag == "Fish" || other.tag == "Fish1")
         {
             FishBehavior fishBehavior = other.GetComponent<FishBehavior>();
             if (fishBehavior != null)
@@ -29,7 +29,7 @@ public class SizeFood : MonoBehaviour
             }
 
             Destroy(gameObject);
-            
+
         }
     }
 }
