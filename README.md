@@ -17,8 +17,16 @@ Screenshots:
 ![image](https://cdn.discordapp.com/attachments/1080478030247497838/1103074293035843696/image.png)
 
 ![image](https://cdn.discordapp.com/attachments/1080478030247497838/1103074428839022642/image.png)
-Instructions
-How it works
+
+Instructions:
+WASD to move around.
+Mouse for camera movement.
+
+How it works:
+Terrain generates every 30 seconds.
+3 different types of fishes.
+
+
 List of classes/assets
 Class/asset	Source
 MyClass.cs	Self written
