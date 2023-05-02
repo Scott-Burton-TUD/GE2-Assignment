@@ -12,6 +12,9 @@ Video:
 YouTube
 
 Screenshots:
+https://cdn.discordapp.com/attachments/1080478030247497838/1103074032846389299/image.png
+https://cdn.discordapp.com/attachments/1080478030247497838/1103074293035843696/image.png
+https://cdn.discordapp.com/attachments/1080478030247497838/1103074428839022642/image.png
 Instructions
 How it works
 List of classes/assets
