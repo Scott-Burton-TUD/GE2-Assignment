@@ -9,7 +9,7 @@ Class Group: DT508 (TU984)
 
 Description
 Video:
-![video](https://youtu.be/lbrd0m5CwpM)
+![youtube](https://youtu.be/lbrd0m5CwpM)
 
 Screenshots:
 ![image](https://cdn.discordapp.com/attachments/1080478030247497838/1103074293035843696/image.png)
