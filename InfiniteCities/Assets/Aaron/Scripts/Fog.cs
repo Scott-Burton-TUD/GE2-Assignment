@@ -4,15 +4,32 @@ using UnityEngine;
 
 public class Fog : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+
+    public bool inZone;
+
+    private void OnTriggerEnter(Collider other)
     {
+        inZone = true;
+        if (other.CompareTag("Camera") && inZone == true)
+        {
+            print("OK");
+            RenderSettings.fog = true;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+
+        inZone = false;
+        if (other.CompareTag("Camera") && inZone == false)
+        {
+            
+            RenderSettings.fog = false;
+        }
         
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+
+
+
 }

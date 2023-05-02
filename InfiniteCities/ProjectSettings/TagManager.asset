@@ -8,6 +8,7 @@ TagManager:
   - Fish
   - combat
   - Fish1
+  - Camera
   layers:
   - Default
   - TransparentFX
